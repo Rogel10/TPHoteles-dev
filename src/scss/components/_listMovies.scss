@@ -1,0 +1,96 @@
+.list-movies {
+    margin-top: 18px;
+    @include flex-box(column, flex-start, center);
+    
+    @include break-point('768'){flex-direction: row;}
+    @include break-point('1440'){margin-top: 24px;}
+    
+    &__item:nth-child(2){
+        @include break-point('768'){ margin-right: 0;}
+        @include break-point('1024'){ margin-right: 24px;}
+    }
+
+    &__item:nth-child(3){
+        display: none;
+        @include break-point('1024'){display: block;margin-right: 0;}
+
+    }
+
+    &__item {
+        width: 272px;
+        height: 153px;
+        box-shadow: 6px 6px 12px 0 rgba(0, 0, 0, 0.5);
+        margin-bottom: 24px;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 5.3px;
+        transition: all .2s;
+        &:hover{    
+            transform: scale(1.05);
+            transition: all .2s;
+        }
+
+        @include break-point('768'){
+            margin-right: 24px;
+        }
+    }
+}
+
+.item-movie{
+
+    
+    height: 100%;
+    position: relative;
+    @include flex-box(column, flex-end, center);
+
+    &::after{
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-image: linear-gradient(to bottom, rgba(60, 65, 75, 0.2), rgba(30, 30, 40, 0.8));
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__poster {
+        position: absolute;
+        top: 0;
+    }
+
+    &__player {
+
+        width: 64px;
+        height: 64px;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 23px;
+        background: url('../media/icons/btn-play.svg') no-repeat;
+        background-size: contain;
+    }
+
+    &__progress-bar {
+
+        width: 192px;
+        height: 6px;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 16px;
+        background-color: var(--gray-300);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    }
+
+}
+
+.progress {
+
+    background-image: linear-gradient(86deg, #412fe8, #d202ac);
+    width: 60px;
+    height: inherit;
+
+}

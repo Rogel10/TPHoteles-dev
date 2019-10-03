@@ -1,0 +1,113 @@
+
+.menu-side-bar{ 
+
+    // border: dashed 2px green;
+    height: 100vw;
+    width: 100%;
+    @include flex-box(column, flex-start, center);
+
+}
+
+.side-bar__logo {
+    // border: dashed 2px blue;
+    width: 120px;
+    height: 70px;
+    margin-top: 79px;
+    cursor: pointer;
+    background: url('../media/general-logo-hotel@1x.png') no-repeat;
+    background-size: contain;
+
+}
+
+.side-bar__clima{
+    // border: dashed 2px red;
+    width: 117px;
+    height: 64px;   
+    margin-top: 40px;
+    cursor: pointer;
+    @include flex-box(column, center, center);
+    
+
+    @include break-point('1440'){margin-top: 109px;}
+
+    div:nth-child(1){
+
+        @include flex-box(row, center, center);
+        margin-bottom: 10px;
+        // border: dashed 3px greenyellow;
+        width: 100%;
+        
+        span {    
+            @include text-font-light(24px, var(--gray-1000));
+            margin-right: 8px;
+            @include flex-box(row, center, center);
+            // border: dashed 1px yellow;
+        }
+
+        div {
+            width: 32px;
+            height: 32px;
+            @include flex-box(row, center, center);
+            background: url('../media/icons/sun.svg');
+            // border: dashed 3px orchid;
+        }
+
+        img{
+            width: 32px;
+            height: 32px;
+
+        }
+
+    } 
+
+    div:nth-child(2){
+        @include text-font-regular(12px, var(--gray-1000));
+    }
+
+    
+
+}
+
+.side-bar__main-menu{
+    @include flex-box(column, flex-start, center);
+    width: 100%;
+    margin-top: 50px;
+
+    @include break-point('1440'){margin-top: 95px;}
+
+    &__item:last-child{ margin-bottom: 0;}
+    &__item {
+        margin-bottom: 10px;
+        height: 32px;
+        width: 100%;
+        @include flex-box(row, flex-start, center);
+        padding-left: 60px;
+        @include text-font-regular(14px, var(--gray-1000));
+        @include break-point('768'){font-size: 16px;}
+        @include break-point('1440'){
+            margin-bottom: 35px;
+        }
+
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+}
+
+.notifications-menu{
+    width: 32px;
+    height: 32px;
+    background-color: var(--red-200);
+    border-radius: 100%;
+    @include flex-box(row, center, center);
+    margin-left: 30px;
+    @include text-font-regular(12px, var(--gray-200));
+    
+}
+
+.viewTv{
+    width: 32px;
+    height: 32px;
+    background: url('../media/icons/icon-tv.svg') no-repeat;
+    @include flex-box(row, center, center);
+}

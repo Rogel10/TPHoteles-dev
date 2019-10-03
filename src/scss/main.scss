@@ -1,0 +1,57 @@
+//This project is based in ITCSS and SMACSS
+
+
+// Helpers
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/animations";
+
+
+//Utilities
+@import "utilities/buttons";
+@import "utilities/videoJs";
+
+// Base and elements (generic)
+@import "base/base";
+@import "base/reset";
+@import "base/typography";
+
+// LAYOUT
+// Escribe solo los estilos de layout (division en regiones del viewport)
+
+@import "layout/topMenu";
+@import "layout/backSection";
+@import "layout/menuMovil";
+@import "layout/sideBarMenu";
+
+// MODULOS (SMACSS) O COMPONENTES (ITCSS)
+  // Son los elementos de UI de tu interfaz, como botones, tablas, menus, etc.
+  // Crea los archivos adicionales que necesites (uno por componente)
+@import "components/channels";
+@import "components/notifications";
+@import "components/events";
+@import "components/consuptions";
+@import "components/languaje";
+@import "components/listMovies";
+@import "components/listPromotions";
+@import "components/listApps";
+@import "components/playerHome";
+@import "components/vod";
+@import "components/vodDetail";
+@import "components/weather";
+@import "components/gallery";
+
+//PAGES
+@import "pages/login";
+@import "pages/home";
+@import "pages/player";
+
+// Theme (colors and fonts)
+
+// Utilities (hacks)
+  // Todos los hacks que hayas necesitado para solucionar conflictos
+  // o resolver situaciones extremas. Se espera poder mejorarlos luego.
+// ****** @import "hacks/hacks";
+
+

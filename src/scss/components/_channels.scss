@@ -1,0 +1,149 @@
+.page-home__content-watch-tv {
+
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    right: 20%;
+    width: 100%;
+    overflow-y: auto;
+    height: 100vh;
+    z-index: 1000;
+    background-color: var(--gray-200);
+    display: none;
+
+}
+
+.page-guide {
+
+    width: 100%;
+    position: relative;
+    @include flex-box(column, flex-start, center);
+    padding-bottom: 10%;
+
+}
+
+.list-channels{
+
+    // border: dashed 1px red;
+    @include flex-box(row, flex-start, center);
+    flex-wrap: wrap;
+    width: calc((var(--width-small-channel) *2) + 10px);
+    
+    @include break-point('768'){
+        width: calc((var(--width-medium-channel) *3) + 22px);
+    }
+
+    @include break-point('1024'){
+        width: calc((var(--width-medium-channel) *4) + 35px);
+    }
+
+    @include break-point('1440'){
+        width: calc((var(--width-large-channel) *4) + 50px);
+    }
+
+    
+    &__channel:nth-child(2n+0){
+
+        margin-right: 0;
+
+        @include break-point('768'){
+            margin-right: 10px;
+        }
+
+        @include break-point('1024'){
+            margin-right: 10px;
+        }
+
+        @include break-point('1440'){
+            margin-right: 16px;
+        }
+    }
+
+    &__channel:nth-child(3n) {
+
+        @include break-point('768'){margin-right: 0;}
+
+        @include break-point('1024'){margin-right: 10px;}
+
+        @include break-point('1440'){margin-right: 16px;
+        }
+    }
+
+    &__channel:nth-child(4n+0){
+
+        @include break-point('1024'){
+            margin-right: 0;
+        }
+
+        @include break-point('1440'){
+            margin-right: 0;
+        }
+    }
+
+
+    &__channel{
+
+        width: 132px;
+        height: 112px;
+        border-radius: 4px;
+        background-color: var(--gray-800);
+        margin-right: 8px;
+        margin-bottom: 8px;
+        transition: all .2s;
+        @include flex-box(column, space-between, center);
+        padding-top: 35px;
+        padding-bottom: 7px;
+        cursor: pointer;
+
+        &:hover{    
+            transform: scale(1.05);
+            transition: all .2s;
+        }
+
+        @include break-point('768'){
+            width: 164px;
+            height: 138px;
+            margin-right: 10px;
+            margin-bottom: 11px;    
+        }
+
+        @include break-point('1024'){
+            margin-right: 10px;
+            margin-bottom: 11px;    
+        }
+
+        @include break-point('1440'){
+            width: 265px;
+            height: 223px;
+            margin-bottom: 17px;  
+            margin-right: 16px;
+        }
+
+    }
+
+    .channel_logo{
+        
+        // border: dashed 1px red;
+        width: 80px;
+        height: 46px;
+
+        @include break-point('768'){
+            width: 100px;
+            height: 57px;
+        }
+        @include break-point('1440'){
+            width: 161px;
+            height: 92px;
+        }
+        
+    }
+
+    .channel_number {
+        @include text-font-regular(14px, var(--gray-300));
+        @include break-point('1440'){
+            margin-bottom: 24px;
+        }
+    }
+
+}
+

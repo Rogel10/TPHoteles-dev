@@ -1,0 +1,193 @@
+body.main-login {overflow: hidden;}
+
+.page-login {
+
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background: url('../media/main-background.jpg') no-repeat;
+    background-size: cover;
+    background-position: top;
+    @include flex-box(column, center, center);
+    opacity: 0; //0
+
+    
+
+}
+
+.page-login-content-animation {
+    opacity: 0; //0
+    @include flex-box(column, center ,center);
+}
+
+.main-logo {
+
+    width: 205px;
+    height: 110px;
+    margin-bottom: 100px;
+    cursor: pointer;
+
+    @include break-point('768'){
+        width: 259px;
+        height: 137px;
+    }
+
+    @include break-point('1024'){}
+
+    img {
+        width: 100%;
+        object-fit: contain;
+    }
+
+}
+
+.login-form {
+
+    margin-bottom: 48px;
+    @include break-point('768'){
+        margin-bottom: 51px;
+    }
+
+    &__nip:last-child{ margin-right: 0;}
+
+    &__nip{
+
+        width: 37px;
+        height: 37px;
+        margin-right: 7px;
+        background-color: var(--blue-70);
+        border: none;
+        border-radius: 4px;
+        @include text-font-regular(20px, var(--white-100));
+        text-align: center;
+        
+        @include break-point('768'){
+            font-size: 30px;
+            width: 63px;
+            height: 63px;
+            margin-right: 13px;
+        }
+    }
+
+}
+
+.login-description{
+
+    
+    @include flex-box(column, center, center);
+    @include break-point('768'){
+        position: relative;
+    }
+
+        h2 {
+            @include text-font-regular(15px, var(--white-100));
+            text-align: center;
+            margin-bottom: 21px;
+            @include break-point('768'){
+                font-size: 20px;
+                margin-bottom: 17px;
+            }
+        }
+        
+        h3 {
+            @include text-font-regular(14px, var(--gray-300));
+            text-align: center;
+            margin-bottom: 25px;
+            @include break-point('768'){
+                font-size: 18px;
+                margin-bottom: 0;
+            }
+        }
+}
+
+.login-help {
+    height: 36px;
+    width: 36px;
+    background-image: url('../media/icons/help.svg');
+    background-size: cover;
+    cursor: pointer;
+    position: relative;
+    @include break-point('768'){
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        right: -45px;
+        top: -5px;
+    }
+}
+
+.modal-code {
+
+    display: none;
+    // height: 592px;
+    // width: 272px;
+    height: 200px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: var(--gray-200);
+    opacity: 0;
+    position: absolute;
+
+    @include break-point('768'){
+        height: 423px;
+        width: 632px;
+    }
+
+    @include break-point('1024'){
+        height: 555px;
+        width: 832px;
+    }
+
+
+    &-close{
+        height: 36px;
+        width: 36px;
+        background-image: url('../media/icons/cancel-24-px.svg');
+        background-size: cover;
+        @include flex-box(row, center, center);
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        cursor: pointer;
+
+    }
+
+}
+
+
+.login-info{
+
+    height: 35px;
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+    @include flex-box(row, center, center);
+    @include break-point('768'){
+        bottom: 40px;
+    }
+
+    :first-child{
+        
+        @include text-font-light(12px, var(--gray-200));
+        opacity: .5;
+        margin-right: 15px;
+        @include break-point('768'){
+            font-size: 14px;
+        }
+    }
+
+    :last-child{
+    
+        width: 95px;
+        height: inherit;
+        background-image: url('../media/TPEmpresarialWHITE.png');
+        background-size: cover;
+        opacity: .5;
+        background-position-y: -10px;
+        @include break-point('768'){
+            width: 114px;
+        }
+    }
+    
+
+}

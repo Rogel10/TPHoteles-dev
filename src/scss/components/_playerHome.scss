@@ -1,0 +1,88 @@
+.player-home {
+
+    position: relative;
+    width: 865px;
+    height: 488px;
+    border-radius: 8.8px;
+    box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(to bottom, rgba(30, 30, 40, 0), #2f2f3d);
+    margin-top: 77px;
+    background-color: var(--gray-900);
+    @include flex-box(column, space-between, center);
+    cursor: pointer;
+    display: none;
+    transition: all .2s;
+    overflow: hidden;
+    
+    &:hover{    
+        transform: scale(1.05);
+        transition: all .2s;
+    }
+
+    @include break-point('1440'){display: flex;}
+
+    &__liveTv{
+
+        width: 183px;
+        height: 44px;
+        border-radius: 0 0 8px 8px;
+        background-color: var(--red-100);
+        @include flex-box(column, center, center);
+
+        &::after{
+            content: 'TV EN VIVO';
+            display: block;
+            @include text-font-semibold(18px, var(--white-100));
+        }
+    }
+
+    &__content{
+        // border: dashed 1px white;
+        height: 100px;
+        width: 100%;
+        @include flex-box(column, flex-start, center);
+    }
+
+    &__progressBar{
+        width: 843px;
+        height: 7px;
+        background-color: rgba(250, 250, 250, 0.7);
+    }
+
+    &__title-program{
+
+        margin-top: 12px;
+        @include text-font-regular(22px, var(--gray-200));
+        height: 32px;
+    }
+
+    &__info-program{
+        margin-top: 12px;
+        @include text-font-regular(18px, var(--gray-200));
+        height: 25px;
+    }
+
+}
+
+.player-home-content{
+    // border: dashed 1px red;
+    position: absolute;
+    z-index: 5;
+    height: inherit;
+    @include flex-box(column, space-between, center);
+
+}
+
+.player-home-hls{
+    width: inherit;
+    height: inherit;
+    // border: dashed 1px red;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-bar-progress{
+    width: 0;
+    height: 7px;
+    background-color: #1a76d2;
+}

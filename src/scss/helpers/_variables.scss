@@ -1,0 +1,62 @@
+/* ********** Custom Properties ********** */
+:root {
+  
+  --main-back: #303030;
+  --white-100: rgba(250, 250, 250, 1);
+  --gray-100: rgba(224, 224, 224);
+  --gray-200: #fafafa;
+  --gray-300: #e0e0e0;
+  --gray-400: #d8d8d8;
+  --gray-500: #979797;
+  --gray-700: #3A4559;
+  --gray-800: #3b4559;
+  --gray-900: #2E303E;
+  --gray-1000: #1e1e28;
+
+
+  --blue-70: rgba(30, 30, 40, 0.7);
+  --blue-100: #032646;
+  --blue-200: #3b4559;
+  --blue-300: #64b5f6;
+  --blue-400: #1a76d2;
+  --blue-500: #59cbe8;
+
+  --red-100: #d32f2f;
+  --red-200: #e4002b;
+
+  --black-100: rgba(63, 81, 147, 0.1);
+  --black-150: rgba(63, 81, 147, 0.15);
+  --black-200: #1e1e28;
+  --shadow-100: 0 26px 32px 0 var(--black-100);
+  --shadow-200: 0 0 16px 0 var(--black-150);
+  
+  --main-gradient: linear-gradient(to bottom, var(--gray-100), var(--gray-300));
+
+  // alto de la cabecera
+
+  --height-header: 112px;
+
+  //size card channel
+  --width-small-card: 272px;
+
+  //size card channel
+  --width-small-channel: 132px;
+  --width-medium-channel: 164px;
+  --width-large-channel: 265px;
+
+  // size card vod
+  --width-small-card-vod: 136px;
+  --width-medium-card-vod: 237px;
+  --width-large-card-vod: 311px;
+  --width-full-card-vod: 335px;
+  
+}
+  
+// MAP
+$break-points: (
+  '320': (min-width: 320px), //mobil 1
+  '500': (min-width: 450px), //mobil 1
+  '768': (min-width: 768px), //tablet
+  '1024': (min-width: 1024px), //escritorio pequeño
+  '1440': (min-width: 1440px) //escritorio mediano
+);

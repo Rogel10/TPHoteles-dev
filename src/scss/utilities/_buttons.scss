@@ -1,0 +1,54 @@
+.btn-primary {
+    
+    width: 132px;
+    height: 40px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(to right, #1a76d2, #01bcd4);
+    border-radius: 20px;
+    @include flex-box(row, center, center);
+    @include text-font-regular(18px, var(--white-100));
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: all .2s;
+    }
+
+    @include break-point('768'){width: 192px;}
+
+    @include break-point('1024'){
+        width: 256px;
+        height: 53px;
+        font-size: 24px;
+    }
+
+}
+
+.btn__transparent-gray{
+    width: 192px;
+    height: 40px;
+    position: relative;
+    border-radius: 100px;
+    border: solid 1px rgba(224, 224, 224, 0.5);
+    transition: 0.3s;
+    cursor: pointer;
+    @include flex-box(row, center, center);
+    @include text-font-regular(18px, var(--gray-200), normal);
+    margin-bottom: 40px;
+    
+
+    @include break-point('1024'){
+        width: 230px;
+        height: 48px;
+        font-size: 22px;
+        margin-bottom: 48px;
+    }
+    
+    @include break-point('1440'){
+        width: 276px;
+        height: 58px;
+        font-size: 26px;
+        margin-bottom: 58px;
+    }
+}

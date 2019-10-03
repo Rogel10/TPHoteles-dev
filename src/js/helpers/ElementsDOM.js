@@ -1,0 +1,17 @@
+
+export const mainContainerHome = document.querySelector('.page-home'),
+        mainContainerLogin = document.querySelector('.page-login'),
+        mainLogo = document.getElementById('loginLogo'),
+        contentInputs = document.querySelector('.login-form'),
+        listInputs = [...document.querySelectorAll('.login-form__nip')],
+        mainHeader = document.querySelector('.main-header'),
+        movilMenu = document.querySelector('.movil-menu'),
+        sections = document.querySelector('.sections'),
+        menusideBar = document.querySelector('.side-bar__main-menu'),
+        listMovies = [...document.querySelectorAll('.list-movies__item .item-movie__poster')],
+        listApps = [...document.querySelectorAll('.list-apps__item .item-apps__poster')],
+        contentPageHome = document.querySelector('.page-home__content-apps'),
+        playerHome = document.querySelector('.player-home'),
+        navMenuSidebar = document.querySelector('.page-home__menu-sidebar'),
+        iconPlayPlayer= document.querySelector('.icon-play'),
+        listPromos = [...document.querySelectorAll('.list-promotions__item .item-promotions_poster')];

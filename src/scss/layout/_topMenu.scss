@@ -1,0 +1,92 @@
+.main-header{
+
+    height: 112px;
+    width: 100%;
+    position: relative;
+    background-color: var(--gray-200);
+    @include flex-box(column, flex-end, center);
+    top: -50%;
+    opacity: 0;
+    z-index: 100;
+    @include break-point('1440'){
+        display: none;
+    }
+
+}
+
+.menu-topbar{
+
+    height: 52px;
+    width: 100%;
+    @include flex-box(row, space-between, flex-end);
+    margin-bottom: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @include break-point('768'){padding: 0 88px;}
+    @include break-point('1024'){padding: 0 100px;}
+
+    &__toggle {
+        width: 32px;
+        height: 32px;
+        background: url('../media/icons/icon-menu.svg') no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        position: relative;
+        @include flex-box(row, center, center);
+
+        &::before{
+            content: 'MENÚ';
+            display: none;
+            @include text-font-regular(14px, var(--black-200));
+            right: -51px;
+            position: absolute;
+            @include break-point('768'){
+                display: flex;
+            }
+
+            @include break-point('1024'){
+                right: -70px;
+            }
+
+        }
+    }
+
+    &__logo{
+
+        width: 99px;
+        height: 52px;
+        // border: dashed 1px red;
+        cursor: pointer;
+        background: url('../media/general-logo-hotel@1x.png') no-repeat;
+        background-size: contain;    
+        position: relative;
+    }
+
+    &__guide{
+        
+        width: 32px;
+        height: 32px;
+        background: url('../media/icons/icon-tv.svg') no-repeat;
+        background-size: cover;
+        @include flex-box(row, center, center);
+        cursor: pointer;
+        position: relative;
+
+        &::after{
+            content: 'MIRA LA TV';
+            display: none;
+            @include text-font-regular(14px, var(--black-200));
+            left: -90px;
+            position: absolute;
+            @include break-point('768'){
+                display: flex;
+            }
+
+            @include break-point('1024'){
+                left: -115px;
+            }
+        }
+    }
+
+}

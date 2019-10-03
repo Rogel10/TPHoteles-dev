@@ -1,0 +1,81 @@
+.page-home__content-watch-notifications{
+    
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    right: 20%;
+    width: 100%;
+    overflow-y: auto;
+    height: 100vh;
+    z-index: 1000;
+    background-color: var(--blue-200);
+    display: none;
+}
+
+.page-notifications {
+    
+    width: 100%;
+    position: relative;
+    @include flex-box(column, flex-start, center);
+    padding-bottom: 10%;
+}
+
+// .page-notifications__content-notifications {
+ 
+// }
+
+
+// UL 
+.list-notifications {
+    margin-top: 20px;   
+    @include flex-box(column, center, center);
+    padding-bottom: 110px;
+}
+
+// LI
+.list-notifications__item {
+
+    height: 112px;
+    margin-bottom: 8px;
+    background-color: var(--gray-200);
+    @include text-font-bold(12px, var(--black-200));
+    cursor: pointer;
+    padding-top: 22px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 4px;
+    @include break-point('768'){width: 590px;}
+    @include break-point('1024'){width: 672px;}
+    @include break-point('1440'){
+        width: 1110px;
+        height: 163px;
+    }
+
+}
+
+.item-notification__location-date{
+    
+    @include flex-box(row, space-between, center);
+    @include break-point('768'){font-size: 14px;}
+    @include break-point('1024'){font-size: 14px;}
+    @include break-point('1440'){font-size: 16px;}
+
+}
+
+.item-notification__description{
+
+    height: 51px;
+    font-size: 16px;
+    @include flex-box(row, center, center);
+    @include break-point('768'){ font-size: 16px;}
+    @include break-point('1024'){ font-size: 16px;}
+    @include break-point('1440'){ 
+        height: 75px;
+        font-size: 20px;
+    }
+}
+
+.isView-false {
+    background-color: var(--gray-300);
+    div{opacity: 0.5;}
+}
