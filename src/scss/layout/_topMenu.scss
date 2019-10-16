@@ -35,6 +35,9 @@
         position: relative;
         @include flex-box(row, center, center);
 
+        &:focus-visible{
+            outline: red solid 2px;
+        }
         &::before{
             content: 'MENÚ';
             display: none;

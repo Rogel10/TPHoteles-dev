@@ -1,5 +1,5 @@
 body.main-login {overflow: hidden;}
-
+.container-login{overflow: hidden;}
 .page-login {
 
     width: 100%;
@@ -116,6 +116,9 @@ body.main-login {overflow: hidden;}
     }
 }
 
+/*
+    -------  STYLES MODAL 
+*/
 .modal-code {
 
     display: none;
@@ -127,10 +130,15 @@ body.main-login {overflow: hidden;}
     background-color: var(--gray-200);
     opacity: 0;
     position: absolute;
+    padding-top: 17px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 
     @include break-point('768'){
         height: 423px;
         width: 632px;
+        padding-top: 43px;
     }
 
     @include break-point('1024'){
@@ -154,9 +162,163 @@ body.main-login {overflow: hidden;}
 
 }
 
+.modal-code-screen-text {
 
-.login-info{
+    // border: dashed 1px orange;
+    height: auto;
+    width: 85.6%;
+    @include flex-box(column, center, center);
+    margin-bottom: 26px;
+    @include break-point('768'){
+        flex-direction: row-reverse;
+        margin-bottom: 37px;
+    }
 
+    //16.3 10.1 10.1 3.5
+    // texto
+    div:first-child {
+        // border: dashed 1px red;
+        width: auto;
+        margin-bottom: 21px;
+        @include text-font-regular(14px, var(--gray-800));
+        margin-bottom: 10px;
+        @include break-point('768'){
+            width: auto;
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+
+
+        p:first-child,
+        p:last-child { 
+            height: 60px;
+            text-align: center;
+            padding: 3%;
+            // border: dashed 1px green;
+            span {color:#1a76d2;}
+            padding: 3%;
+            @include break-point('768'){
+                width: 281px;
+                height: auto;
+            }
+
+            @include break-point('1024'){
+                width: 369px;
+            }
+        }
+
+        p:first-child{
+            font-size: 14px;
+            @include break-point('768'){
+                font-size: 18px;
+            }
+        }
+        p:last-child{
+            font-size: 12px;
+            @include break-point('768'){
+                font-size: 14px;
+            }
+        }
+
+    }
+    // imagen
+    div:last-child {
+        // border: dashed 1px blue;
+        width: 218px;
+        height: 122px;
+        background: url('../media/resources/HomeScreen.png') no-repeat;
+        background-size: contain;
+        background-position: top center;
+
+        @include break-point('768'){
+            width: 275px;
+            height: 154px;
+        }
+        @include break-point('1024'){
+            width: 351px;
+            height: 196px;
+        }
+    }
+}
+
+.modal-code-screen-code {
+
+    // border: dashed 1px red;
+    height: auto;
+    width: 85.6%;
+    @include flex-box(column, center, center);
+    @include break-point('768'){
+        flex-direction: row;
+    }
+
+    div:first-child {
+        // border: dashed 1px red;
+        // width: 192px;
+        width: auto;
+        margin-bottom: 21px;
+        @include text-font-regular(14px, var(--gray-800));
+        margin-bottom: 10px;
+
+        @include break-point('768'){
+            width: auto;
+            font-size: 18px;
+        }
+
+        p:first-child,
+        p:last-child { 
+            height: 60px;
+            text-align: center;
+            span {color:#1a76d2;}
+            padding: 3%;
+            @include break-point('768'){
+                width: 281px;
+                height: auto;
+            }
+            @include break-point('1024'){
+                width: 369px;
+            }
+        }
+
+        p:first-child{
+            font-size: 14px;
+            @include break-point('768'){
+                font-size: 18px;
+            }
+        }
+        p:last-child {
+            font-size: 12px;
+            @include break-point('768'){
+                font-size: 14px;
+            }
+
+        }
+
+    }
+    div:last-child {
+        //  border: dashed 1px blue;
+        width: 218px;
+        height: 122px;
+        background: url('../media/resources/CodeApp.png') no-repeat;
+        background-size: contain;
+        background-position: top center;
+        @include break-point('768'){
+            width: 275px;
+            height: 154px;
+        }
+        @include break-point('1024'){
+            width: 351px;
+            height: 196px;
+        }
+
+    }
+
+
+}
+
+
+.login-info {
+
+    // border: dashed 1px red;
     height: 35px;
     width: 100%;
     position: absolute;
@@ -180,10 +342,10 @@ body.main-login {overflow: hidden;}
     
         width: 95px;
         height: inherit;
-        background-image: url('../media/TPEmpresarialWHITE.png');
+        background: url('../media/TPEmpresarialWHITE.png') no-repeat;
         background-size: cover;
         opacity: .5;
-        background-position-y: -10px;
+        background-position-y: -15px;
         @include break-point('768'){
             width: 114px;
         }

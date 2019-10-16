@@ -1,18 +1,24 @@
 .page-home__content-watch-consumos{
 
-    @include main-container;
-
+    // @include main-container;
+    @include animationLeft();
+    // -webkit-overflow-scrolling: touch; /* deja que se desplace, con retardo */
 }
 
 .page-consumos {
     background-color: var(--blue-200);
     overflow-x: hidden;
+    position: relative;
+    @include flex-box(column, flex-start, center );
+    
 }
 
 //menu
 .page-consumos__nav {
+    
     margin-bottom: 12px;
     padding-left: 26px;
+    width: 100%;
     @include break-point('768'){
         margin-bottom: 32px;
         padding-left: 0;
@@ -23,8 +29,11 @@
 
     
     @include flex-box(row, flex-start, center);
+
     overflow: hidden;
     @include break-point('500'){justify-content: center;}
+    // border: dashed 1px white;
+
 }
 
 .list-consumos__item {
@@ -129,23 +138,25 @@
 }
 
 .page-consumos__bar-costs {
+    
+    position: fixed;
     height: 110px;
     width: 100%;
     background-color: rgba(30, 30, 40, 0.9);
-    position: fixed;
     bottom: 0;
+    left: 0;
+    z-index: 8888;
     @include flex-box(column, center, center);
     @include break-point('768'){
         align-items: flex-end;
         padding-right: 172px;
-        
     }
 
 }
 
 .bar-costs__price {
 
-    // border: dashed 1px white;
+    
     width: 235px;
     text-align: right;
     margin-bottom: 9px;
@@ -170,3 +181,39 @@
     // border: dashed 1px white;
     @include text-font-italic(14px, var(--blue-500));
 }
+
+
+// Y CITO !! SACADO DE "edetEAM"
+.page-home__content-watch-consumos::-webkit-scrollbar {
+    width: 8px;     
+    height: 8px;    
+    display: none;  
+  }
+  
+  
+  .page-home__content-watch-consumos::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  // Cambiamos el fondo y agregamos una sombra cuando esté en hover 
+  .page-home__content-watch-consumos::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  // Cambiamos el fondo cuando esté en active 
+  .page-home__content-watch-consumos::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
+  
+  .page-home__content-watch-consumos::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  // Cambiamos el fondo cuando esté en active o hover 
+  .page-home__content-watch-consumos::-webkit-scrollbar-track:hover,
+  .page-home__content-watch-consumos::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+  }

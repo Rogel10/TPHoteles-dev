@@ -2,13 +2,14 @@ import { createCustomElement, closeSection } from '../../helpers/helpers.js';
 import { BackSectionVoddetail } from '../layout/BackSection.js';
 import iconSVG from '../../../media/icons/hd.svg';
 import trailerVod from '../../../media/resources/trailer-vod.jpg';
+import { TweenMax, Expo } from 'gsap';
 
 export default class VodDetail {
 
     constructor(isChild) {
         this.props = {
             mainContainer: null,
-            tl: new TimelineMax(),
+            // tl: new TimelineMax(),
             isChild: isChild
         }
     }
@@ -82,13 +83,18 @@ export default class VodDetail {
         this.props.buttonBack = document.querySelector('.btn-back-vod-detail');
 
         //animaciones
-        this.props.tl.to('.page-home__vodDetail', .5, {
-            opacity: 1,
-            right: 0,
+        TweenMax.to('.page-home__vodDetail', 0.8, {
+            left: 0,
             display: 'block',
-            ease: Power1.easeOut
-        }).to('.page-detail-vod', .5,  {top: 0, ease: Power1.easeOut}, .5);
-        this.props.tl.play();
+            ease: Expo.easeInOut
+        });
+        // this.props.tl.to('.page-home__vodDetail', .5, {
+        //     opacity: 1,
+        //     right: 0,
+        //     display: 'block',
+        //     ease: Power1.easeOut
+        // }).to('.page-detail-vod', .5,  {top: 0, ease: Power1.easeOut}, .5);
+        // this.props.tl.play();
 
         this.onkeyPress();
 
@@ -100,12 +106,17 @@ export default class VodDetail {
 
         this.props.buttonBack.addEventListener('click', () => {
 
-            this.props.tl.to('.page-home__vodDetail', .5, {
-                right: '20%',
-                opacity: 0,
-                ease: Back.easeOut.config(1.7),
+            TweenMax.to('.page-home__vodDetail', 0.5, {
+                left: '-100%',
+                ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
+            // this.props.tl.to('.page-home__vodDetail', .5, {
+            //     right: '20%',
+            //     opacity: 0,
+            //     ease: Back.easeOut.config(1.7),
+            //     onComplete: this.onExit()
+            // });
 
         });
 

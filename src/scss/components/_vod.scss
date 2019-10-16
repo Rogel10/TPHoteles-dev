@@ -4,7 +4,9 @@
 
 .page-home__content-vod{
     
-    @include main-container;
+    // @include main-container;
+    @include animationLeft();
+    background-color: var(--gray-200);
 }
 
 
@@ -15,10 +17,13 @@
     @include flex-box(column, flex-start, center);
     position: relative;
     top: 0;
+    background-color: var(--gray-200);
+    padding-bottom: 5%;
 }
 
 .page-vod__main-banner{
 
+    position: relative;
     width: 294px;
     height: 164px;
     border-radius: 15px;
@@ -67,7 +72,7 @@
 
 .content-vod__list-vods{
 
-    // border: dashed 1px purple;
+    
     @include flex-box(row, flex-start, center);
     flex-wrap: wrap;
     width: calc((var(--width-small-card-vod)*2 + 22px));
@@ -142,6 +147,41 @@
     }
 
 }
+
+// Y CITO !! SACADO DE "edetEAM"
+.page-home__content-vod::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+    display: none;  /* Ocultar scroll */
+  }
+  
+  /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+  .page-home__content-vod::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+  .page-home__content-vod::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Cambiamos el fondo cuando esté en active */
+  .page-home__content-vod::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
+  
+  .page-home__content-vod::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  /* Cambiamos el fondo cuando esté en active o hover */
+  .page-home__content-vod::-webkit-scrollbar-track:hover,
+  .page-home__content-vod::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+  }
 
 // .page {
 //     position: absolute;

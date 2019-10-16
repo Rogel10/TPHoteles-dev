@@ -1,4 +1,5 @@
 import { createCustomElement, closeSection, openSection } from "../../helpers/helpers.js";
+import { TweenMax, Expo } from 'gsap';
 
 // import { BackSection } from './BackSection';
 import API from '../../api/Api';
@@ -9,9 +10,7 @@ export default class Weather {
     constructor() {
         this.props = {   
             mainContainer: null,
-            tl: new TimelineMax({
-                pause: true
-            })
+            // tl: new TimelineMax({pause: true})
         }        
     }
 
@@ -107,14 +106,18 @@ export default class Weather {
         this.props.mainContainer.appendChild(container);
 
         //animaciones
-        this.props.tl.to('.page-home__content-weather', .3, {
-            opacity: 1,
-            right: 0,
+        // this.props.tl.to('.page-home__content-weather', .3, {
+        //     opacity: 1,
+        //     right: 0,
+        //     display: 'block',
+        //     ease: Power1.easeOut
+        // });
+        // this.props.tl.play();
+        TweenMax.to('.page-home__content-weather', 0.8, {
+            left: 0,
             display: 'block',
-            ease: Power1.easeOut
+            ease: Expo.easeInOut
         });
-
-        this.props.tl.play();
 
         this.onkeypressEvents();
 
@@ -124,19 +127,24 @@ export default class Weather {
 
         // BTN BACK
         document.querySelector('.btn-back-weather').addEventListener('click', () => {
-            this.props.tl.to(this.props.mainContainer, .5, {
-                right: '20%',
-                opacity: 0,
-                ease: Back.easeOut.config(1.7),
+            TweenMax.to(this.props.mainContainer, 0.5, {
+                left: '-100%',
+                ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
+            // this.props.tl.to(this.props.mainContainer, .5, {
+            //     right: '20%',
+            //     opacity: 0,
+            //     ease: Back.easeOut.config(1.7),
+            //     onComplete: this.onExit()
+            // });
         })
 
     }
 
     onExit() {
         let el = document.querySelector('.page-weather');
-        closeSection(el, this.props.mainContainer, this.props.tl);
+        closeSection(el, this.props.mainContainer);
     }
 
 } 

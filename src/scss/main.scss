@@ -7,11 +7,6 @@
 @import "helpers/mixins";
 @import "helpers/animations";
 
-
-//Utilities
-@import "utilities/buttons";
-@import "utilities/videoJs";
-
 // Base and elements (generic)
 @import "base/base";
 @import "base/reset";
@@ -24,6 +19,7 @@
 @import "layout/backSection";
 @import "layout/menuMovil";
 @import "layout/sideBarMenu";
+@import "layout/menuMobile";
 
 // MODULOS (SMACSS) O COMPONENTES (ITCSS)
   // Son los elementos de UI de tu interfaz, como botones, tablas, menus, etc.
@@ -47,11 +43,15 @@
 @import "pages/home";
 @import "pages/player";
 
+
+
 // Theme (colors and fonts)
 
 // Utilities (hacks)
   // Todos los hacks que hayas necesitado para solucionar conflictos
   // o resolver situaciones extremas. Se espera poder mejorarlos luego.
 // ****** @import "hacks/hacks";
-
+//Utilities
+@import "utilities/buttons";
+@import "utilities/videoJs";
 

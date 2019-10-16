@@ -37,7 +37,7 @@
     }
 
     &__content{
-        // border: dashed 1px white;
+        
         height: 100px;
         width: 100%;
         @include flex-box(column, flex-start, center);
@@ -71,12 +71,15 @@
     height: inherit;
     @include flex-box(column, space-between, center);
 
+    // .icon-play {
+    //     top: 50%;
+    // }
+
 }
 
 .player-home-hls{
     width: inherit;
     height: inherit;
-    // border: dashed 1px red;
     position: relative;
     z-index: 1;
 }

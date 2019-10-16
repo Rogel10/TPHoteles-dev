@@ -1,3 +1,4 @@
+import { TweenMax, Expo } from "gsap";
 import { createCustomElement, closeSection, openSection } from "../../helpers/helpers";
 import { BackSection } from '../layout/BackSection.js';
 import VodDetail from '../components/VodDetail.js';
@@ -17,9 +18,7 @@ export default class Vod {
     constructor() {
         this.props = {   
             mainContainer: null,
-            tl: new TimelineMax({
-                pause: true
-            }),
+            // tl: new TimelineMax({ pause: true}),
             vodDetail: new VodDetail({child: true})
         }        
     }
@@ -28,6 +27,7 @@ export default class Vod {
 
         document.body.style.overflowY = 'hidden';
         this.props.mainContainer = document.querySelector(`.${container}`);
+
         let mainvod = ` 
             <img src="${imgVodBanner}" alt="">
         `;
@@ -101,13 +101,18 @@ export default class Vod {
 
 
         //animaciones
-         this.props.tl.to('.page-home__content-vod', .5, {
-            opacity: 1,
-            right: 0,
+        TweenMax.to('.page-home__content-vod', 0.8, {
+            left: 0,
             display: 'block',
-            ease: Power1.easeOut
-        }).to('.page-vod', .5,  {top: 0, ease: Power1.easeOut}, .5);
-        this.props.tl.play();
+            ease: Expo.easeInOut
+        });
+        //  this.props.tl.to('.page-home__content-vod', .5, {
+        //     opacity: 1,
+        //     right: 0,
+        //     display: 'block',
+        //     ease: Power1.easeOut
+        // }).to('.page-vod', .5,  {top: 0, ease: Power1.easeOut}, .5);
+        // this.props.tl.play();
 
         this.onkeyPress();
 
@@ -116,13 +121,18 @@ export default class Vod {
     onkeyPress() {
 
         document.querySelector('.back-section__back').addEventListener('click', () => {
-
-            this.props.tl.to('.page-home__content-vod', .5, {
-                right: '20%',
-                opacity: 0,
-                ease: Back.easeOut.config(1.7),
+            
+            TweenMax.to('.page-home__content-vod', 0.5, {
+                left: '-100%',
+                ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
+            // this.props.tl.to('.page-home__content-vod', .5, {
+            //     right: '20%',
+            //     opacity: 0,
+            //     ease: Back.easeOut.config(1.7),
+            //     onComplete: this.onExit()
+            // });
         });
 
         this.props.contentVods.addEventListener('click', (e) => {
@@ -141,7 +151,8 @@ export default class Vod {
     onExit() {
 
         let el = document.querySelector('.page-vod');
-        closeSection(el, this.props.mainContainer, this.props.tl);
+        closeSection(el, this.props.mainContainer);
+        // closeSection(el, this.props.mainContainer, this.props.tl);
 
     }
 

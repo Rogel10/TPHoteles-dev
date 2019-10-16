@@ -1,21 +1,24 @@
 .page-home__content-watch-tv {
 
-    position: fixed;
-    opacity: 0;
-    top: 0;
-    right: 20%;
-    width: 100%;
-    overflow-y: auto;
-    height: 100vh;
-    z-index: 1000;
-    background-color: var(--gray-200);
-    display: none;
+    // position: fixed;
+    // opacity: 0;
+    // top: 0;
+    // right: 20%;
+    // width: 100%;
+    // overflow-y: auto;
+    // height: 100vh;
+    // z-index: 1000;
+    // background-color: var(--gray-200);
+    // display: none;
+    @include animationLeft();
 
 }
 
 .page-guide {
 
     width: 100%;
+    background-color: var(--gray-200);
+    height: auto;
     position: relative;
     @include flex-box(column, flex-start, center);
     padding-bottom: 10%;
@@ -28,6 +31,7 @@
     @include flex-box(row, flex-start, center);
     flex-wrap: wrap;
     width: calc((var(--width-small-channel) *2) + 10px);
+    opacity: 1;
     
     @include break-point('768'){
         width: calc((var(--width-medium-channel) *3) + 22px);
@@ -81,7 +85,7 @@
     }
 
 
-    &__channel{
+    &__channel {
 
         width: 132px;
         height: 112px;
@@ -94,6 +98,15 @@
         padding-top: 35px;
         padding-bottom: 7px;
         cursor: pointer;
+
+        // a {
+        //     border: dashed 1px red;
+        //     display: block;
+        //     height: 100%;
+        //     @include flex-box(column, space-between, center);
+        //     padding-top: 35px;
+        //     padding-bottom: 7px;
+        // }
 
         &:hover{    
             transform: scale(1.05);
@@ -123,7 +136,6 @@
 
     .channel_logo{
         
-        // border: dashed 1px red;
         width: 80px;
         height: 46px;
 
@@ -140,6 +152,9 @@
 
     .channel_number {
         @include text-font-regular(14px, var(--gray-300));
+        width: 100%;
+        text-align: center;
+        
         @include break-point('1440'){
             margin-bottom: 24px;
         }
@@ -147,3 +162,45 @@
 
 }
 
+// Y CITO !! SACADO DE "edetEAM"
+.page-home__content-watch-tv::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+    display: none;  /* Ocultar scroll */
+  }
+  
+  /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+  .page-home__content-watch-tv::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+  .page-home__content-watch-tv::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Cambiamos el fondo cuando esté en active */
+  .page-home__content-watch-tv::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
+  
+  .page-home__content-watch-tv::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  /* Cambiamos el fondo cuando esté en active o hover */
+  .page-home__content-watch-tv::-webkit-scrollbar-track:hover,
+  .page-home__content-watch-tv::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+  }
+
+// .page {
+//     position: absolute;
+//     top: 10%;
+//     left: 0;
+//     width: 100%;
+//     height: 100vh;
+//   }

@@ -50,6 +50,7 @@ export default class Home {
 
     init(){
         
+        console.log('llego al HOME .... ');
         const background = localStorage.getItem('urlBackground');
         UI.mainContainerHome.style.cssText = `background-image: url(${background});`;
         this.setImages(); 
@@ -61,48 +62,49 @@ export default class Home {
     }
 
     onkeypressEvents(){
-
-        console.log('se ejecuta el onkeypressEvents del HOME ');
+        
         // click open menu movil 
         document.querySelector('.menu-topbar__toggle').addEventListener('click', () => {
             this.props.menuMovil.init();
             this.props.showMenu = true;
-            let tlMenuMobile = this.props.tlMenuMobile;
-            tlMenuMobile.set('.movil-menu', {display: 'flex'});
             document.documentElement.style.overflowY = 'hidden';
+            
+            // let tlMenuMobile = this.props.tlMenuMobile;
+            // tlMenuMobile.set('.movil-menu', {display: 'flex'});
+            // document.documentElement.style.overflowY = 'hidden';
 
-            tlMenuMobile
-            .to('.movil-menu-shadow', 1, {opacity: 1, ease: Power3.easeOut})
-            .to('.movil-menu__content', 1, {opacity: 1, left: 0, ease: Power4.easeOut}, '-=1');
+            // tlMenuMobile
+            // .to('.movil-menu-shadow', 1, {opacity: 1, ease: Power3.easeOut})
+            // .to('.movil-menu__content', 1, {opacity: 1, left: 0, ease: Power4.easeOut}, '-=1');
 
-            tlMenuMobile.play();
+            // tlMenuMobile.play();
 
        });
 
         // click para cerrar el Menu movil
-        document.querySelector('.movil-menu').addEventListener('click', (e) => {
+        // document.querySelector('.movil-menu').addEventListener('click', (e) => {
 
-            let tlMenuMobile = this.props.tlMenuMobile;
-            if( e.target.classList.contains('movil-menu-shadow' )){
+        //     let tlMenuMobile = this.props.tlMenuMobile;
+        //     if( e.target.classList.contains('movil-menu-shadow' )){
 
-                tlMenuMobile
-                .to('.movil-menu-shadow', 1, {opacity: 0, ease: Power3.easeOut})
-                .to('.movil-menu__content', 1, {opacity: 0, left: '-100%', ease: Power4.easeOut}, '-=1');
+        //         tlMenuMobile
+        //         .to('.movil-menu-shadow', 1, {opacity: 0, ease: Power3.easeOut})
+        //         .to('.movil-menu__content', 1, {opacity: 0, left: '-100%', ease: Power4.easeOut}, '-=1');
 
-                setTimeout( ()=> {
-                    tlMenuMobile.set('.movil-menu', { clearProps : 'display'});
-                    tlMenuMobile.set('.movil-menu__content', {clearProps: 'opacity,left'});
-                    tlMenuMobile.set('.movil-menu-shadow', {clearProps:'opacity'});
-                },300);                
+        //         setTimeout( ()=> {
+        //             tlMenuMobile.set('.movil-menu', { clearProps : 'display'});
+        //             tlMenuMobile.set('.movil-menu__content', {clearProps: 'opacity,left'});
+        //             tlMenuMobile.set('.movil-menu-shadow', {clearProps:'opacity'});
+        //         },300);                
 
-                document.documentElement.removeAttribute('style');
-                this.props.showMenu = false;
+        //         document.documentElement.removeAttribute('style');
+        //         this.props.showMenu = false;
 
-                removeAllChilds(UI.movilMenu);
+        //         removeAllChilds(UI.movilMenu);
 
 
-            }
-        });
+        //     }
+        // });
 
         // click Channels top menu
         document.querySelector('.menu-topbar__guide').addEventListener('click', () => {
@@ -191,7 +193,7 @@ export default class Home {
         window.addEventListener('resize', () => {
 
             let size = window.innerWidth;
-            console.log(' en RESIZE ******** ', size);
+            // console.log(' en RESIZE ******** ', size);
             // size < 1400 ? this.killPlayer() : this.continuePlayer();
             this.setImages(size);
             this.animationsHome(size);
@@ -199,7 +201,7 @@ export default class Home {
             
             // opcional ---
             if(size < 1440) {
-                console.log(' ===> estoy en menos de 1440');
+                // console.log(' ===> estoy en menos de 1440');
                 this.props.tlMainElements.set(UI.contentPageHome, {clearProps: 'left'});  
             }
 

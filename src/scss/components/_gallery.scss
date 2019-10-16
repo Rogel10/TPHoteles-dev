@@ -1,32 +1,35 @@
 
 .page-home__content-gallery {
 
-    position: fixed;
-    opacity: 0;
-    top: 0;
-    right: 20%;
-    width: 100%;
-    overflow-y: auto;
-    height: 100vh;
-    z-index: 1000;
-    background-color: var(--gray-200);
-    display: none;
-    overflow: hidden;
-
+    // position: fixed;
+    // opacity: 0;
+    // top: 0;
+    // right: 20%;
+    // width: 100%;
+    // overflow-y: auto;
+    // height: 100vh;
+    // z-index: 1000;
+    // background-color: var(--gray-200);
+    // display: none;
+    // overflow: hidden;
+    @include animationLeft();
+    height: auto;
+    
 }
 
 .page-gallery {
 
     width: 100%;
-    height: 100vh;
-    position: relative;
+    height: 100%;
+    position: fixed;
     background: url('../media/back-menu@3x.png') no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
     background-position: bottom;
     @include flex-box(column, flex-start, center);
-
+    overflow: auto;
+    background-color: var(--gray-200);
     //hash  repararlo en el futuro
     .back-section {
         @include break-point('768'){margin-top: 22px;}
@@ -60,7 +63,7 @@
     }
 }
 
-.gallery-backgound{
+.gallery-backgound {
 
     width: 100%;
     height: 100%;
@@ -236,7 +239,7 @@
 
 }
 
-.list-thumbnails{
+.list-thumbnails {
     
     height: 150px;
     width: 100%;
@@ -278,3 +281,39 @@
         box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.5);
     }
 }
+
+
+// Y CITO !! SACADO DE "edetEAM"
+.page-home__content-gallery::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+    display: none;  /* Ocultar scroll */
+  }
+  
+  /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+  .page-home__content-gallery::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+  .page-home__content-gallery::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Cambiamos el fondo cuando esté en active */
+  .page-home__content-gallery::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
+  
+  .page-home__content-gallery::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  /* Cambiamos el fondo cuando esté en active o hover */
+  .page-home__content-gallery::-webkit-scrollbar-track:hover,
+  .page-home__content-gallery::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+  }

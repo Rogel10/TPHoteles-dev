@@ -11,6 +11,7 @@ export default class Login {
     constructor() {
 
         this.props = {
+            
             contentInputs: document.querySelector('.login-form'),
             listInputs: [...document.querySelectorAll('.login-form__nip')],
             cont : 0,
@@ -23,6 +24,7 @@ export default class Login {
 
     init(){
 
+        console.log('en login ........')
         const app = new API();
         app.getServiceLogin().then(obj => {
             this.responseLoginData(obj);
@@ -117,14 +119,20 @@ export default class Login {
         gnuScreenOne = 1024,
         gnuScreenTwo = 1440;
 
+        console.log('SIZE => ',size);
+
         if(size < gnuTablet ) {
             // < 320
-            return { h:'592px', w:'272px'}
-        } else if (size >= gnuTablet && size <= gnuScreenOne) {
+            // return { w:'272px', h:'592px'}
+            return {w: '85%', h: '88.8%'}
+        } else if (size >= gnuTablet && size < gnuScreenOne) {
             // >= 768 && <= 1024
+            // console.log('1 >= 768 && <= 1024');
             return {h:'423px', w:'632px'};
+            // return {w:'82.3%', h:'41.3%'}
         } else if (size >= gnuScreenOne && size <= gnuScreenTwo) {
             // >= 1024 && <= 1440
+            console.log('2 >= 1024 && <= 1440');
             return {h:'555px', w:'832px'};
         } else {
             // > 1440
@@ -137,12 +145,14 @@ export default class Login {
         document.querySelector('.login-help').addEventListener('click', () => {
 
             const data = this.getSizeModal();
-            this.props.tlModal.to('.modal-code', 1, {
+            this.props.tlModal.to('.modal-code', 0.5, {
                 display: 'flex',
                 opacity: 1,
                 height: data.h,
                 width: data.w,
-                ease: Elastic.easeOut.config(1, 0.3)
+                // ease: Elastic.easeOut.config(1, 0.3)
+                // ease: Power0.easeOut
+                ease: Elastic.easeOut.config(1.2, 0.75)
             });
 
         });

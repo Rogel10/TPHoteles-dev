@@ -1,5 +1,6 @@
 import { createCustomElement, closeSection } from "../../helpers/helpers.js";
 import { BackSection } from '../layout/BackSection.js';
+import { TweenMax, Expo } from "gsap";
 import imgWhite from '../../../media/icons/left-arrow-white.svg';
 import imgTransparent from '../../../media/icons/left-arrow.svg';
 
@@ -39,7 +40,6 @@ export default class Languaje {
         }, [topBar, contentList]);
 
         // inyecta todo el contenido al main container
-        console.log('this.props.mainContainer: ',this.props.mainContainer)
         this.props.mainContainer.appendChild(container);
 
 
@@ -53,13 +53,19 @@ export default class Languaje {
 
 
         //animaciones
-        this.props.tl.to('.page-home__content-watch-languaje', .5, {
-            opacity: 1,
-            right: 0,
+        TweenMax.to('.page-home__content-watch-languaje', 0.8, {
+            left: 0,
             display: 'block',
-            ease: Power1.easeOut
-        }).to('.page-home__content-watch-languaje', .5,  {top: 0, ease: Power1.easeOut}, .5);
-        this.props.tl.play();
+            ease: Expo.easeInOut
+        });
+        // this.props.tl.to('.page-home__content-watch-languaje', .5, {
+        //     opacity: 1,
+        //     right: 0,
+        //     display: 'block',
+        //     ease: Power1.easeOut
+        // }).to('.page-home__content-watch-languaje', .5,  {top: 0, ease: Power1.easeOut}, .5);
+        // this.props.tl.play();
+
         this.onkeyPress();
     }
 
@@ -67,20 +73,28 @@ export default class Languaje {
 
         // BTN BACK
         document.querySelector('.back-section__back').addEventListener('click', () => {
-            this.props.tl.to('.page-home__content-watch-languaje', .5, {
-                right: '20%',
-                opacity: 0,
-                ease: Back.easeOut.config(1.7),
+
+            TweenMax.to('.page-home__content-watch-languaje', 0.5, {
+                left: '-100%',
+                ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
-        })
+
+            // this.props.tl.to('.page-home__content-watch-languaje', .5, {
+            //     right: '20%',
+            //     opacity: 0,
+            //     ease: Back.easeOut.config(1.7),
+            //     onComplete: this.onExit()
+            // });
+        });
 
     }
 
     onExit(){
 
         let el = document.querySelector('.page-languaje');
-        closeSection(el, this.props.mainContainer, this.props.tl);
+        closeSection(el, this.props.mainContainer);
+        // closeSection(el, this.props.mainContainer, this.props.tl);
     }
 
 

@@ -8,6 +8,7 @@ export const addAtributes = (element, objAttr) => {
     }
 }
 
+//www.megapeliculasrip.com
 
 // Crear elemento personalizado
 /**
@@ -49,17 +50,18 @@ export const openSection = (_section, _params) => {
     el.classList.add(_params.className);
     container.appendChild(el);
     _section.init(_params.className);
-    document.body.style.overflowY = 'hidden';
+    // document.body.style.overflowY = 'hidden';
 
 }
 
-export const closeSection = (_element, _container, _animation, _isChild = false) => {
+// export const closeSection = (_element, _container, _animation, _isChild = false) => {
+export const closeSection = (_element, _container, _isChild = false) => {
     
     const container = document.querySelector('.page-home');
 
     setTimeout(() => {
-        _animation.set(`.${_container.className}`, {clearProps: 'right, opacity, overflow-y, display'});
-        _animation.set(`.${_element.className}`, {clearProps: 'top, opacity'});
+        // _animation.set(`.${_container.className}`, {clearProps: 'right, opacity, overflow-y, display'});
+        // _animation.set(`.${_element.className}`, {clearProps: 'top, opacity'});
         _container.removeChild(_element);
         
         if(!_isChild.child)
@@ -85,8 +87,6 @@ export const removeAllChilds = (_container) => {
 
 
 export const getSizeWindow = (widthWindow) => {
-
-    console.log('llego a getSizeWindow: ', widthWindow);
     
     var gnuMobil = 320,
     gnuTablet = 768,
