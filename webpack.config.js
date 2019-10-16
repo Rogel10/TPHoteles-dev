@@ -1,6 +1,8 @@
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -47,7 +49,18 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'sass-loader?outputStyle=compressed&sourceMap=true'
+                    'postcss-loader',
+                    // {
+                    //   loader: 'postcss-loader',
+                    //   options: {
+                    //     autoprefixer: {
+                    //       browser: ['last 2 versions']
+                    //     },
+                    //     sourceMap: true,
+                    //     plugins: () => [autoprefixer]
+                    //   }
+                    // },
+                    'sass-loader?outputStyle=expanded&sourceMap=true'
                 ]
             },
             {
@@ -81,11 +94,16 @@ module.exports = {
     },
 
     plugins: [
-
         new MiniCssExtractPlugin({
             filename: 'css/style-min.css'
         }),
-
+        new webpack.LoaderOptionsPlugin({
+          options: {
+            postcss: [
+              autoprefixer()
+            ]
+          }
+        }),
         new HtmlWebpackPlugin({
               template: './src/index.html',
               filename: 'index.html',
@@ -100,7 +118,9 @@ module.exports = {
           template: './src/player.html',
           filename: 'player.html',
           chunks: ['js']
-      })
+        }),
+        new CopyWebpackPlugin(['src/sw.js','src/manifest.json'])
+        
     ]
 
 }
