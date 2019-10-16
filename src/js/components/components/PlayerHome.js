@@ -65,33 +65,28 @@ export default class PlayerHome {
         // console.log('tag de video ===> ',this.props.videoHTML);
         
         // console.log(source);
-        source[0].src = 'https://totalgo.totalplay.com.mx:444/TPMCOREWeb/LiveAdaptive?v=N&session=o0fuxd2pwz6xhuf&lchId=2169&format=HLSAD&f=.m3u8'
-        // source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/WBK0560DS1/03.m3u8';
+        //source[0].src = 'https://totalgo.totalplay.com.mx:444/TPMCOREWeb/LiveAdaptive?v=N&session=o0fuxd2pwz6xhuf&lchId=2169&format=HLSAD&f=.m3u8'
+        source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/WBK0560DS1/03.m3u8';
 
         var options = {
             controls: false,
             autoplay: true,
-            preload: 'auto'
+            
         };
 
         this.props.mainPlayer = videojs(this.props.videoHTML, options, function onPlayerReady(){
 
+            // In this context, `this` is the player that was created by Video.js.
+            this.play();
+            this.volume(0.5); 
 
+            // How about an event listener?
+            this.on('ended', function() {
+                videojs.log('Awww...over so soon?!');
+                videojs.log('termino el video ñeeeeeeee');
+            });
 
         });
-        // this.props.mainPlayer = videojs(this.props.videoHTML, options, function onPlayerReady() {
-        //     videojs.log('Your player is ready!');
-            
-        //     // In this context, `this` is the player that was created by Video.js.
-        //     this.play();
-        //     this.volume(0.5); 
-        //     // How about an event listener?
-        //     this.on('ended', function() {
-        //         videojs.log('Awww...over so soon?!');
-        //         videojs.log('termino el video')
-        //     });
-
-        // });
 
         this.resize();
 
