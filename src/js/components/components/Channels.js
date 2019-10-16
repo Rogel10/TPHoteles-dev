@@ -1,3 +1,4 @@
+import { TweenMax, Expo } from 'gsap';
 import { createCustomElement, closeSection } from '../../helpers/helpers.js';
 import { BackSection } from '../layout/BackSection.js';
 import c1 from '../../../media/resources/Channels/01.png';
@@ -27,7 +28,7 @@ export default class ListChannels {
     constructor() {
         this.props = {   
             mainContainer: null,
-            tl: new TimelineMax(),
+            // tl: new TimelineMax(),
             contentChannels: null,
             data: {
                 channels: [
@@ -58,16 +59,12 @@ export default class ListChannels {
 
         let items = `
        <li class="list-channels__channel"> 
-            <a href="/player.html">
-                <img class="channel_logo" src="${c1}" alt="">
-                <div class="channel_number">1</div>
-            </a>
+            <img class="channel_logo" src="${c1}" alt="">
+            <div class="channel_number">1</div>
         </li>
         <li class="list-channels__channel">
-            <a href="/player.html">
-                <img class="channel_logo" src="${c2}" alt="">
-                <div class="channel_number">2</div>
-            </a>
+            <img class="channel_logo" src="${c2}" alt="">
+            <div class="channel_number">2</div>
         </li>
         <li class="list-channels__channel">
             <img class="channel_logo" src="${c3}" alt="">
@@ -171,30 +168,33 @@ export default class ListChannels {
 
         const container = createCustomElement('section', {
             class: 'page-guide'
-        }, [topBar, contentList, player]);
+        }, [topBar, contentList]);
 
         // inyecta todo el contenido al main container
         this.props.mainContainer.appendChild(container);
 
         //animaciones
-        this.props.tl.to('.page-home__content-watch-tv', .3, {
-            opacity: 1,
-            right: 0,
+        TweenMax.to('.page-home__content-watch-tv', 0.8, {
+            left: 0,
             display: 'block',
-            ease: Power1.easeOut
-        }).to('.page-guide', .5,  {top: 0, ease: Power1.easeOut}, .5);
-        this.props.tl.play();
-        
+            ease: Expo.easeInOut
+        });
+        // this.props.tl.to('.page-home__content-watch-tv', .3, {
+        //     opacity: 1,
+        //     right: 0,
+        //     display: 'block',
+        //     ease: Power1.easeOut
+        // }).to('.page-guide', .5,  {top: 0, ease: Power1.easeOut}, .5);
+        // this.props.tl.play();
         
         this.props.contentChannels =  document.querySelector('.list-channels');
         this.props.listChannels = [...document.querySelectorAll('.list-channels__channel')];
-        this.props.video = document.getElementById('videoPlayerChannels');
-        console.log('this.props.contentChannels === ',this.props.video);
+        // this.props.video = document.getElementById('videoPlayerChannels');
+        // console.log('this.props.contentChannels === ',this.props.video);
 
         this.onkeyPress();
 
-        console.log('id ??? ',this.props.video.id);
-
+        // console.log('id ??? ',this.props.video.id);
         // var player = videojs('example-video');
         // player.play();
     }
@@ -203,10 +203,15 @@ export default class ListChannels {
 
         // BTN BACK
         document.querySelector('.back-section__back').addEventListener('click', () => {
-            this.props.tl.to('.page-home__content-watch-tv', .5, {
-                right: '20%',
-                opacity: 0,
-                ease: Back.easeOut.config(1.7),
+            // this.props.tl.to('.page-home__content-watch-tv', .5, {
+            //     right: '20%',
+            //     opacity: 0,
+            //     ease: Back.easeOut.config(1.7),
+            //     onComplete: this.onExit()
+            // });
+            TweenMax.to('.page-home__content-watch-tv', 0.5, {
+                left: '-100%',
+                ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
         })
@@ -219,7 +224,7 @@ export default class ListChannels {
                 if(e.target.nodeName === 'LI' || e.target.parentNode.nodeName === 'LI'){
 
                     let indexHover = this.props.listChannels.indexOf(target);
-                    console.log('indexHover => ', indexHover);
+                    // console.log('indexHover => ', indexHover);
 
                 }
         })
@@ -229,7 +234,7 @@ export default class ListChannels {
 
     onExit() {
         let el = document.querySelector('.page-guide');
-        closeSection(el, this.props.mainContainer, this.props.tl);
+        closeSection(el, this.props.mainContainer);
     }
 
 }

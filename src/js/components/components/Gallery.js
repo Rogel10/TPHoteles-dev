@@ -1,6 +1,9 @@
 import { createCustomElement, closeSection } from '../../helpers/helpers.js';
+import { TimelineMax } from "gsap";
 import { BackSection } from '../layout/BackSection.js';
 import imgGallery from '../../../media/icons/878052.svg';
+import { TweenMax, Expo } from 'gsap';
+
 export default class Gallery {
 
     constructor(){
@@ -86,12 +89,17 @@ export default class Gallery {
         this.props.mainContainer.appendChild(container);
 
         //animaciones
-        this.props.tl.to(this.props.mainContainer, .3, {
-            opacity: 1,
-            right: 0,
+        TweenMax.to(this.props.mainContainer, 0.8, {
+            left: 0,
             display: 'block',
-            ease: Power1.easeOut
+            ease: Expo.easeInOut
         });
+        // this.props.tl.to(this.props.mainContainer, .3, {
+        //     opacity: 1,
+        //     right: 0,
+        //     display: 'block',
+        //     ease: Power1.easeOut
+        // });
         
 
         this.props.ulGallery = document.querySelector('.gallery-content');     
@@ -164,19 +172,24 @@ export default class Gallery {
         });
 
         document.querySelector('.back-section__back').addEventListener('click', () => {
-            this.props.tl.to(this.props.mainContainer, .5, {
-                right: '20%',
-                opacity: 0,
-                ease: Back.easeOut.config(1.7),
+            TweenMax.to(this.props.mainContainer, 0.5, {
+                left: '-100%',
+                ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
+            // this.props.tl.to(this.props.mainContainer, .5, {
+            //     right: '20%',
+            //     opacity: 0,
+            //     ease: Back.easeOut.config(1.7),
+            //     onComplete: this.onExit()
+            // });
         })
 
     }
 
     onExit() {
         let el = document.querySelector('.page-gallery');
-        closeSection(el, this.props.mainContainer, this.props.tl);
+        closeSection(el, this.props.mainContainer);
     }
 
 }

@@ -1,4 +1,4 @@
-import { TimelineMax } from "gsap";
+import { TweenMax, Expo } from "gsap";
 import { createCustomElement, closeSection } from "../../helpers/helpers.js";
 import { BackSection } from '../layout/BackSection.js';
 import imgWhite from '../../../media/icons/left-arrow-white.svg';
@@ -9,8 +9,8 @@ export default class Events {
 
     constructor () {
         this.props = {
-            mainContainer: null,
-            tl: new TimelineMax({pause: true})
+            mainContainer: null
+            // tl: new TimelineMax({pause: true})
         }
     }
 
@@ -126,7 +126,6 @@ export default class Events {
             }, [topBar, contentList]);
 
             // inyecta todo el contenido al main container
-            console.log('mainContainer: ',this.props.mainContainer);
             this.props.mainContainer.appendChild(container);
 
 
@@ -140,13 +139,18 @@ export default class Events {
 
 
             //animaciones
-            this.props.tl.to('.page-home__content-watch-events', .5, {
-                opacity: 1,
-                right: 0,
+            TweenMax.to('.page-home__content-watch-events', 0.8, {
+                left: 0,
                 display: 'block',
-                ease: Power1.easeOut
-            }).to('.page-events', .5,  {top: 0, ease: Power1.easeOut}, .5);
-            this.props.tl.play();
+                ease: Expo.easeInOut
+            });
+            // this.props.tl.to('.page-home__content-watch-events', .5, {
+            //     opacity: 1,
+            //     right: 0,
+            //     display: 'block',
+            //     ease: Power1.easeOut
+            // }).to('.page-events', .5,  {top: 0, ease: Power1.easeOut}, .5);
+            // this.props.tl.play();
             
             this.onkeyPress();
 
@@ -156,10 +160,15 @@ export default class Events {
 
             // BTN BACK
             document.querySelector('.back-section__back').addEventListener('click', () => {
-                this.props.tl.to('.page-home__content-watch-events', .5, {
-                    right: '20%',
-                    opacity: 0,
-                    ease: Back.easeOut.config(1.7),
+                // this.props.tl.to('.page-home__content-watch-events', .5, {
+                //     right: '20%',
+                //     opacity: 0,
+                //     ease: Back.easeOut.config(1.7),
+                //     onComplete: this.onExit()
+                // });
+                TweenMax.to('.page-home__content-watch-events', 0.5, {
+                    left: '-100%',
+                    ease: Expo.easeInOut,
                     onComplete: this.onExit()
                 });
             });
@@ -169,7 +178,8 @@ export default class Events {
         onExit() {
     
             let el = document.querySelector('.page-events');
-            closeSection(el, this.props.mainContainer, this.props.tl);
+            closeSection(el, this.props.mainContainer);
+            // closeSection(el, this.props.mainContainer, this.props.tl);
 
         }
 
