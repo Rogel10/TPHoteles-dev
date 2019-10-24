@@ -1,4 +1,5 @@
-import * as UI from '../../helpers/ElementsDOM';
+import * as UI from '../../helpers/ElementsDOM.js';
+import {TPH} from '../../api/config.js'
 import videojs from 'video.js';
 
 
@@ -14,8 +15,6 @@ export default class PlayerHome {
 
     init(){
         this.render();
-        
-        
     }
 
 
@@ -24,7 +23,6 @@ export default class PlayerHome {
         window.addEventListener('resize', () => {
 
             let size = window.innerWidth;
-            
             if(size < 1440){
                 this.props.mainPlayer.pause();
             }
@@ -62,14 +60,8 @@ export default class PlayerHome {
 
         this.props.videoHTML = document.querySelector('.player-home-hls');
         let source = this.props.videoHTML.getElementsByTagName('source');
-        // console.log('tag de video ===> ',this.props.videoHTML);
-        
-        // console.log(source);
-        //source[0].src = 'https://totalgo.totalplay.com.mx:444/TPMCOREWeb/LiveAdaptive?v=N&session=o0fuxd2pwz6xhuf&lchId=2169&format=HLSAD&f=.m3u8'
-       // source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/WBK0560DS1/03.m3u8';
-      
-       //source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/VUKS07599191/index.m3u8';
-       source[0].src = '';
+        source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/VUKS07599191/index.m3u8';
+       
        
         var options = {
             controls: false,
@@ -78,21 +70,21 @@ export default class PlayerHome {
             muted: true
         };
 
-        // this.props.mainPlayer = videojs(this.props.videoHTML, options, function onPlayerReady(){
+        this.props.mainPlayer = videojs(this.props.videoHTML, options, function onPlayerReady(){
 
-        //     videojs.log('Your player is ready! ...');
-        //     // In this context, `this` is the player that was created by Video.js.
+            videojs.log('Your player is ready! ...');
+            // In this context, `this` is the player that was created by Video.js.
             
 
-        //     // How about an event listener?
-        //     this.on('ended', function() {
-        //         videojs.log('Awww...over so soon?!');
-        //         videojs.log('termino el video ñeeeeeeee');
-        //     });
+            // How about an event listener?
+            this.on('ended', function() {
+                videojs.log('Awww...over so soon?!');
+                videojs.log('termino el video ñeeeeeeee');
+            });
 
-        // });
-
-
+        });
+        
+        TPH.playerHome.instance = this.props.mainPlayer;
         this.resize();
 
     }

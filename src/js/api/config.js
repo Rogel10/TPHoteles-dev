@@ -6,5 +6,9 @@ export const TPH = {
     },
     app: {
 
+    },
+    playerHome: {
+        active: false,
+        instance: ''
     }
 }

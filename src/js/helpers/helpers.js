@@ -1,5 +1,6 @@
 // import VodDetail from '../pages/VodDetail';
 import * as UI from './ElementsDOM.js'
+import {TPH} from '../api/config.js'
 
 //Agrega atributos a un elemento
 export const addAtributes = (element, objAttr) => {
@@ -44,6 +45,14 @@ export const createCustomElement = (tagName, objAttr, children) => {
 
 export const openSection = (_section, _params) => {
 
+    const element = document.querySelector('.page-home');
+    if(element.childElementCount >= 3){
+        console.log('PAUSE VIDEO ....');
+        TPH.playerHome.instance.pause();
+        TPH.playerHome.instance.muted = false;
+
+    }
+
     const container = document.querySelector('.page-home');
     const el = document.createElement('div');
 
@@ -56,10 +65,8 @@ export const openSection = (_section, _params) => {
 
 // export const closeSection = (_element, _container, _animation, _isChild = false) => {
 export const closeSection = (_element, _container, _isChild = false) => {
-    
-    
+        
     const container = document.querySelector('.page-home');
-
     setTimeout(() => {
         // _animation.set(`.${_container.className}`, {clearProps: 'right, opacity, overflow-y, display'});
         // _animation.set(`.${_element.className}`, {clearProps: 'top, opacity'});
@@ -72,7 +79,17 @@ export const closeSection = (_element, _container, _isChild = false) => {
         container.removeChild(container.lastChild);
         
     },800);
-    
+
+    // ARREGLAR EN EL FUTURO ESTA VALIDACION !
+    setTimeout(() => {
+
+        if(container.childElementCount <= 3){
+            TPH.playerHome.instance.play();
+            TPH.playerHome.instance.muted = true;
+        }
+
+    },1000);
+
 }
 
 /**
