@@ -14,9 +14,9 @@ export default class Events {
         }
     }
 
-    init(container) {
+    init(params) {
 
-        this.props.mainContainer = document.querySelector(`.${container}`);
+        this.props.mainContainer = document.querySelector(`.${params.className}`);
         const events = `
                 <li class="events-item">
                     <div class="events-item__title">

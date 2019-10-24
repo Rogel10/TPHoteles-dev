@@ -16,10 +16,10 @@ export default class Consumos {
 
     }
 
-    init(container){
+    init(params){
 
 
-        this.props.mainContainer = document.querySelector(`.${container}`);
+        this.props.mainContainer = document.querySelector(`.${params.className}`);
         const consumos = `
                 <li class="content-consumos--list__item">
                     <div class="item-list__data-date"><span>Cuenta A</span><span>19/03/19</span></div>
@@ -132,12 +132,6 @@ export default class Consumos {
             display: 'block',
             ease: Expo.easeInOut
         });
-        // this.props.tl.to('.page-home__content-watch-consumos', .5, {
-        //     opacity: 1,
-        //     right: 0,
-        //     display: 'block',
-        //     ease: Power1.easeOut
-        // }).to('.page-consumos', .5,  {top: 0, ease: Power1.easeOut}, .5);
 
         this.onkeyPress();
     }
@@ -152,14 +146,7 @@ export default class Consumos {
                 ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
-
-            // this.props.tl.to('.page-home__content-watch-consumos', .5, {
-            //     right: '20%',
-            //     opacity: 0,
-            //     ease: Back.easeOut.config(1.7),
-            //     onComplete: this.onExit()
-            // });
-        })
+        });
 
     }
 

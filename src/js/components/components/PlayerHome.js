@@ -37,7 +37,7 @@ export default class PlayerHome {
 
         //https://ott.cdn.iutpcdn.com/VOD/H01/HD/WBK0560DS1/03.m3u8
         const html = `
-            <video class="player-home-hls video-js vjs-default-skin" preload="none">
+            <video class="player-home-hls video-js vjs-default-skin">
                 Tu navegador no soporta el elemento <code>video</code>.
                 <source src="" type="application/x-mpegURL">
                 
@@ -58,7 +58,7 @@ export default class PlayerHome {
             this.onkeyPressEvent();
     }
 
-    setURL(){
+    setURL() {
 
         this.props.videoHTML = document.querySelector('.player-home-hls');
         let source = this.props.videoHTML.getElementsByTagName('source');
@@ -66,27 +66,32 @@ export default class PlayerHome {
         
         // console.log(source);
         //source[0].src = 'https://totalgo.totalplay.com.mx:444/TPMCOREWeb/LiveAdaptive?v=N&session=o0fuxd2pwz6xhuf&lchId=2169&format=HLSAD&f=.m3u8'
-        source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/WBK0560DS1/03.m3u8';
-
+       // source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/WBK0560DS1/03.m3u8';
+      
+       //source[0].src = 'https://ott.cdn.iutpcdn.com/VOD/H01/HD/VUKS07599191/index.m3u8';
+       source[0].src = '';
+       
         var options = {
             controls: false,
             autoplay: true,
-            
+            preload: 'auto',
+            muted: true
         };
 
-        this.props.mainPlayer = videojs(this.props.videoHTML, options, function onPlayerReady(){
+        // this.props.mainPlayer = videojs(this.props.videoHTML, options, function onPlayerReady(){
 
-            // In this context, `this` is the player that was created by Video.js.
-            this.play();
-            this.volume(0.5); 
+        //     videojs.log('Your player is ready! ...');
+        //     // In this context, `this` is the player that was created by Video.js.
+            
 
-            // How about an event listener?
-            this.on('ended', function() {
-                videojs.log('Awww...over so soon?!');
-                videojs.log('termino el video ñeeeeeeee');
-            });
+        //     // How about an event listener?
+        //     this.on('ended', function() {
+        //         videojs.log('Awww...over so soon?!');
+        //         videojs.log('termino el video ñeeeeeeee');
+        //     });
 
-        });
+        // });
+
 
         this.resize();
 
@@ -100,6 +105,7 @@ export default class PlayerHome {
 
         document.querySelector('.player-home-content').addEventListener('click', () => {
             this.props.videoHTML.requestFullscreen();
+            // this.props.videoHTML.controls = true;
 
             // if(!this.props.click){
             //     this.props.click = true;

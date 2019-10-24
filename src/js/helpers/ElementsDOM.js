@@ -15,4 +15,5 @@ export const mainContainerHome = document.querySelector('.page-home'),
         playerHome = document.querySelector('.player-home'),
         navMenuSidebar = document.querySelector('.page-home__menu-sidebar'),
         iconPlayPlayer= document.querySelector('.icon-play'),
+        listMoviesItem = [...document.querySelectorAll('.item-movie')],
         listPromos = [...document.querySelectorAll('.list-promotions__item .item-promotions_poster')];

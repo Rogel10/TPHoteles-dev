@@ -43,10 +43,9 @@ export default class Gallery {
         }
     }
 
-    init(container){
+    init(params){
 
-
-        this.props.mainContainer = document.querySelector(`.${container}`);
+        this.props.mainContainer = document.querySelector(`.${params.className}`);
         this.createElements();
     }
 

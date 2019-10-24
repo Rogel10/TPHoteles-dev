@@ -1,5 +1,6 @@
 
 .page-home__vodDetail {
+
     // @include main-container;
     @include animationLeft();
     z-index: 1500;
@@ -9,6 +10,7 @@
 
 
 .page-detail-vod {
+
     position: relative;
     width: 100%;
     height: auto;
@@ -50,12 +52,50 @@
     }
 
     @include break-point('1440'){
-        width: 1440px;
-        height: 818px;
+        
+        width: 80%; //1440px;
+        height: 409px;//818px;
         margin-bottom: 87px;
+    }
+    
+}
+
+.poster-movie {
+
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    z-index: 100;
+    opacity: 1;
+
+}
+
+    .poster-layer {
+        position: absolute;
+        height: inherit;
+        width: inherit;
+        background-image: linear-gradient(to bottom, rgba(60, 65, 75, 0.2), rgba(30, 30, 40, 0.8));
+        @include flex-box(row, center, center);
+        &::before {
+            content: '';
+            display: block;
+            height: 20%;
+            width: 20%;
+            background: url('../media/icons/btn-play.svg') no-repeat;
+            background-size: contain;
+            background-position: center;
+            cursor: pointer;
+        }
+    }
+
+    .poster-image{
+
     }
 
 
+.player-js-tp-triller{
+    width: inherit;
+    height: inherit;
 }
 
 // buttons

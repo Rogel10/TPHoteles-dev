@@ -1,59 +1,26 @@
-.main-player {
+.main-player{
     background-color: var(--black-200);
     width: 100%;
     height: 100vh;
     @include flex-box(column, flex-start, center);
-    position: relative;
     overflow-x: hidden;
+    overflow-y: hidden;
     padding-top: 3%;
-}
-
-.video-main{
-    position: relative;
-    top:0;
-    // border: dashed 2px greenyellow;
-    width: 100vw;
-    height: 75vh;
-}
-
-.content-video-player{
-    position: relative;
-    @include flex-box(column, center, center)
-}
-
-.icon-play{
-    
-    height: 80px;
-    width: 80px;
     position: absolute;
-    z-index: 9999999999;
-    background: url('../media/icons/btn-play.svg') no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    transition: all .500ms ease-in-out;
-}
-.vjs-big-play-button{
-    display: none !important;
+    display: none;
+    top: 0;
+    left: -100%;
+    z-index: 90800;
+    
 }
 
-.video {
-    width: 100%;
-    opacity: 0;
-    @include break-point('768'){ height: 432px;}
-    @include break-point('1024'){ height: 575px;}
-    @include break-point('1440') {height: 100vh;}
-    // border: dashed 1px white
-
-}
-
+// CONTROLS
 .controls-player {
     width: 100%;
-    // border: dashed 1px yellow;
     height: 50px;
     @include flex-box(row, space-between, center);
     @include text-font-regular(12px, var(--gray-200));
-    padding: 0 3%;
-    opacity: 0;
+    padding: 0 3%;    
     transition: all .2s ease-in-out;
 
     @include break-point('1024'){
@@ -61,12 +28,6 @@
         top: 0;
         z-index: 600;
     }
-}
-
-.controls-player{
-
-    opacity: 1;
-    transition: all .2s ease-in-out;
 }
 
 .controls-player__back {
@@ -104,6 +65,53 @@
         display: flex;
     }
 }
+
+
+// CONTENT VIDEO
+.content-video-player{
+    position: relative;
+    @include flex-box(column, center, center);
+}
+
+.video-main,
+.player-js-tp {
+    position: relative;
+    top:0;
+    width: 100vw;
+    height: 75vh;
+    z-index: 5555;
+    cursor: pointer;
+}
+
+
+.icon-play{
+    
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    z-index: 9999999999;
+    background: url('../media/icons/btn-play.svg') no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all .500ms ease-in-out;
+}
+
+.vjs-big-play-button{
+    display: none !important;
+}
+
+// .video {
+//     border: dashed 2px yellow;
+//     width: 100%;
+//     opacity: 0;
+//     @include break-point('768'){ height: 432px;}
+//     @include break-point('1024'){ height: 575px;}
+//     @include break-point('1440') {height: 100vh;}
+//     // border: dashed 1px white
+
+// }
+
+
 
 /*
 .player-content {

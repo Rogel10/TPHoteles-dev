@@ -24,7 +24,7 @@ export default class Login {
 
     init(){
 
-        console.log('en login ........')
+        console.log('en login ........');
         const app = new API();
         app.getServiceLogin().then(obj => {
             this.responseLoginData(obj);

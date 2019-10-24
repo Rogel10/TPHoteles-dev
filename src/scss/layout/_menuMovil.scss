@@ -54,9 +54,10 @@
     width: 100%;
     @include flex-box(row, flex-start, center);
     padding-left: 60px;
-    border: dashed 2px black;
+    // border: dashed 2px black;
+    cursor: pointer;
     @include break-point('768'){
         font-size: 16px;
     }
-    display: none;
+    // display: none;
 }

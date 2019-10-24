@@ -1,6 +1,7 @@
 import { TweenMax, Expo } from 'gsap';
-import { createCustomElement, closeSection } from '../../helpers/helpers.js';
+import { createCustomElement, closeSection, openSection } from '../../helpers/helpers.js';
 import { BackSection } from '../layout/BackSection.js';
+import Player from './Player.js';
 import c1 from '../../../media/resources/Channels/01.png';
 import c2 from '../../../media/resources/Channels/02.png';
 import c3 from '../../../media/resources/Channels/03.png';
@@ -52,10 +53,10 @@ export default class ListChannels {
         }        
     }
 
-    init(container) {
+    init(params) {
 
-        
-        this.props.mainContainer = document.querySelector(`.${container}`);
+       this.props.mainContainer = document.querySelector(`.${params.className}`);
+       console.log('params : ',params);
 
         let items = `
        <li class="list-channels__channel"> 
@@ -111,8 +112,8 @@ export default class ListChannels {
             <div class="channel_number">13</div>
         </li>
         <li class="list-channels__channel">
-            <img class="channel_logo" src="${c14}" alt="">
-            <div class="channel_number">14</div>
+        <img class="channel_logo" src="${c14}" alt="">
+        <div class="channel_number">14</div>
         </li>
         <li class="list-channels__channel">
             <img class="channel_logo" src="${c15}" alt="">
@@ -145,11 +146,10 @@ export default class ListChannels {
         <li class="list-channels__channel">
             <img class="channel_logo" src="${c2}" alt="">
             <div class="channel_number">22</div>
-        </li>
-       `;
-       
-           
+        </li>`;
+    
        this.createElements(items);
+
     }
 
     createElements(_items) {
@@ -161,10 +161,9 @@ export default class ListChannels {
             class: 'list-channels'
         }, [_items]);
 
-        const player = createCustomElement('div', {
-            class: 'video-player-channels',
-            id: 'videoPlayerChannels'
-        } );
+        // const player = createCustomElement('div', {
+        //     class: 'main-player',
+        // } );
 
         const container = createCustomElement('section', {
             class: 'page-guide'
@@ -179,19 +178,11 @@ export default class ListChannels {
             display: 'block',
             ease: Expo.easeInOut
         });
-        // this.props.tl.to('.page-home__content-watch-tv', .3, {
-        //     opacity: 1,
-        //     right: 0,
-        //     display: 'block',
-        //     ease: Power1.easeOut
-        // }).to('.page-guide', .5,  {top: 0, ease: Power1.easeOut}, .5);
-        // this.props.tl.play();
         
         this.props.contentChannels =  document.querySelector('.list-channels');
         this.props.listChannels = [...document.querySelectorAll('.list-channels__channel')];
-        // this.props.video = document.getElementById('videoPlayerChannels');
-        // console.log('this.props.contentChannels === ',this.props.video);
-
+        this.props.contentVideo = document.querySelector('.main-player');
+        this.props.container = document.querySelector('.page-guide');
         this.onkeyPress();
 
         // console.log('id ??? ',this.props.video.id);
@@ -201,35 +192,41 @@ export default class ListChannels {
 
     onkeyPress() {
 
-        // BTN BACK
+        // CLICK BTN BACK
         document.querySelector('.back-section__back').addEventListener('click', () => {
-            // this.props.tl.to('.page-home__content-watch-tv', .5, {
-            //     right: '20%',
-            //     opacity: 0,
-            //     ease: Back.easeOut.config(1.7),
-            //     onComplete: this.onExit()
-            // });
-            TweenMax.to('.page-home__content-watch-tv', 0.5, {
+            TweenMax.to('.page-home__content-watch-tv', 0.8, {
                 left: '-100%',
                 ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
-        })
+        });
 
-        // click channel
+        // CLICK CHANNEL
         this.props.contentChannels.addEventListener('click', (e) => {
 
+            let target = (e.target.parentElement.localName === 'li') ? e.target.parentNode : e.target;
+            if(e.target.nodeName === 'LI' || e.target.parentNode.nodeName === 'LI') {
 
-                let target = (e.target.parentElement.localName === 'li') ? e.target.parentNode : e.target;
-                if(e.target.nodeName === 'LI' || e.target.parentNode.nodeName === 'LI'){
+                let indexHover = this.props.listChannels.indexOf(target);
+                // console.log('indexHover => ', indexHover);
+                // funcion que buscara en el arrayChannles y regresara el objeto para enviar
+                this.goToPlayer();
+            }
 
-                    let indexHover = this.props.listChannels.indexOf(target);
-                    // console.log('indexHover => ', indexHover);
-
-                }
-        })
+        });
 
 
+    }
+
+    goToPlayer(_item){
+
+        const player = new Player();
+        openSection(player, {
+            className: 'main-player',
+            channelItem: {},
+            contentVideo: this.props.contentVideo,
+            parent: this.props.mainContainer
+        });
     }
 
     onExit() {

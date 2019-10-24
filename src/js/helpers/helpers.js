@@ -49,39 +49,48 @@ export const openSection = (_section, _params) => {
 
     el.classList.add(_params.className);
     container.appendChild(el);
-    _section.init(_params.className);
-    // document.body.style.overflowY = 'hidden';
+    _section.init(_params);
+    document.body.style.overflowY = 'hidden';
 
 }
 
 // export const closeSection = (_element, _container, _animation, _isChild = false) => {
 export const closeSection = (_element, _container, _isChild = false) => {
     
+    
     const container = document.querySelector('.page-home');
 
     setTimeout(() => {
         // _animation.set(`.${_container.className}`, {clearProps: 'right, opacity, overflow-y, display'});
         // _animation.set(`.${_element.className}`, {clearProps: 'top, opacity'});
-        _container.removeChild(_element);
+        if(_element)
+            _container.removeChild(_element);
         
         if(!_isChild.child)
             document.body.removeAttribute('style');
 
         container.removeChild(container.lastChild);
         
-    },300);
+    },800);
     
 }
 
+/**
+ * 
+ * @param {*} _container 
+ * esta funcion borra solo los hijos del nodo
+ */
+
 export const removeAllChilds = (_container) => {
-    
     setTimeout(() => {
         if (_container.hasChildNodes() ){
             while ( _container.childNodes.length >= 1 ){
                 _container.removeChild( _container.firstChild );
             }
+        }else{
+            // no hay nada que borrar
         }
-    }, 400);
+    }, 500);
     
 }
 

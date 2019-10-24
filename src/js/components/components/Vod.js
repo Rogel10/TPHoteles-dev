@@ -23,10 +23,10 @@ export default class Vod {
         }        
     }
     
-    init(container) {
+    init(params) {
 
         document.body.style.overflowY = 'hidden';
-        this.props.mainContainer = document.querySelector(`.${container}`);
+        this.props.mainContainer = document.querySelector(`.${params.className}`);
 
         let mainvod = ` 
             <img src="${imgVodBanner}" alt="">

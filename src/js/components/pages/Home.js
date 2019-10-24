@@ -9,6 +9,8 @@ import PlayerHome from '../components/PlayerHome.js';
 import Vod from '../components/Vod.js';
 import Gallery from '../components/Gallery.js';
 import * as UI from '../../helpers/ElementsDOM.js';
+import Player from '../components/Player.js';
+import VodDetail from '../components/VodDetail.js'
 
 //Small
 import imgAppSmall_1 from '../../../media/resources/SMALL/OnDemand-SMALL.jpg';
@@ -39,7 +41,7 @@ export default class Home {
         this.props = {
             topMenu : new TopMenu(),
             menuMovil: new MenuMovil(),
-            tlMenuMobile: new TimelineMax(),
+            
             tlMainElements: new TimelineMax({
                 pause: true
             }),
@@ -65,46 +67,27 @@ export default class Home {
         
         // click open menu movil 
         document.querySelector('.menu-topbar__toggle').addEventListener('click', () => {
+            
             this.props.menuMovil.init();
             this.props.showMenu = true;
             document.documentElement.style.overflowY = 'hidden';
             
-            // let tlMenuMobile = this.props.tlMenuMobile;
-            // tlMenuMobile.set('.movil-menu', {display: 'flex'});
-            // document.documentElement.style.overflowY = 'hidden';
-
-            // tlMenuMobile
-            // .to('.movil-menu-shadow', 1, {opacity: 1, ease: Power3.easeOut})
-            // .to('.movil-menu__content', 1, {opacity: 1, left: 0, ease: Power4.easeOut}, '-=1');
-
-            // tlMenuMobile.play();
-
        });
 
-        // click para cerrar el Menu movil
-        // document.querySelector('.movil-menu').addEventListener('click', (e) => {
+       // LIST MOVIES
 
-        //     let tlMenuMobile = this.props.tlMenuMobile;
-        //     if( e.target.classList.contains('movil-menu-shadow' )){
+       document.querySelector('.list-movies').addEventListener('click', (e) => {
 
-        //         tlMenuMobile
-        //         .to('.movil-menu-shadow', 1, {opacity: 0, ease: Power3.easeOut})
-        //         .to('.movil-menu__content', 1, {opacity: 0, left: '-100%', ease: Power4.easeOut}, '-=1');
+            let index = UI.listMoviesItem.indexOf(e.target);
+            if(e.target.classList.contains('open-player')) {
+                const player = new Player();
+                openSection(player, {className: 'main-player'});
+            } else {
+                const vodDetail = new VodDetail();
+                openSection(vodDetail, {className: 'page-home__vodDetail'});
+            }
 
-        //         setTimeout( ()=> {
-        //             tlMenuMobile.set('.movil-menu', { clearProps : 'display'});
-        //             tlMenuMobile.set('.movil-menu__content', {clearProps: 'opacity,left'});
-        //             tlMenuMobile.set('.movil-menu-shadow', {clearProps:'opacity'});
-        //         },300);                
-
-        //         document.documentElement.removeAttribute('style');
-        //         this.props.showMenu = false;
-
-        //         removeAllChilds(UI.movilMenu);
-
-
-        //     }
-        // });
+       });
 
         // click Channels top menu
         document.querySelector('.menu-topbar__guide').addEventListener('click', () => {
@@ -112,41 +95,7 @@ export default class Home {
             openSection(modalChannels, {className: 'page-home__content-watch-tv'});
         });
 
-        // click items del menu
-
-    //     document.querySelector('.side-bar__main-menu').addEventListener('click', (e) => {
-
-    //         console.log('click en side-bar__main-menu *** **** ');
-    //         if (e.target.localName === 'li') {
-    //             switch(e.target.id) {
-    //                 case 'ItemWatchTv':
-    //                     const modalChannels = new ListChannels();
-    //                     openSection(modalChannels, {className: 'page-home__content-watch-tv'});
-    //                 break;
-
-    //                 case 'ItemNotifications':
-    //                     const notifications = new Notifications();
-    //                     openSection(notifications, {className: 'page-home__content-watch-notifications'});
-    //                 break;
-                    
-    //                 case 'ItemEvents':
-    //                     const events = new Events();
-    //                     openSection(events, {className: 'page-home__content-watch-events'});
-    //                 break;
-
-    //                 case 'ItemConsumos':
-    //                     const consumos = new Consumos();
-    //                     openSection(consumos, {className: 'page-home__content-watch-consumos'});
-    //                 break;
-
-    //                 case 'ItemLanguaje':
-    //                     const languaje = new Languaje();
-    //                     openSection(languaje, {className: 'page-home__content-watch-languaje'});
-    //                 break;
-    //             }
-    //         }
-
-    //    });
+       
         
        document.getElementById('open-ondeMand').addEventListener('click', () => {
             const vod = new Vod();

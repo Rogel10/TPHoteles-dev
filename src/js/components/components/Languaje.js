@@ -13,9 +13,9 @@ export default class Languaje {
         }
     }
 
-    init(container){
+    init(params){
 
-        this.props.mainContainer = document.querySelector(`.${container}`);
+        this.props.mainContainer = document.querySelector(`.${params.className}`);
         const idiomas = `        
             <li class="btn__transparent-gray active">Español</li>
             <li class="btn__transparent-gray">English</li>
@@ -58,13 +58,6 @@ export default class Languaje {
             display: 'block',
             ease: Expo.easeInOut
         });
-        // this.props.tl.to('.page-home__content-watch-languaje', .5, {
-        //     opacity: 1,
-        //     right: 0,
-        //     display: 'block',
-        //     ease: Power1.easeOut
-        // }).to('.page-home__content-watch-languaje', .5,  {top: 0, ease: Power1.easeOut}, .5);
-        // this.props.tl.play();
 
         this.onkeyPress();
     }
@@ -74,18 +67,12 @@ export default class Languaje {
         // BTN BACK
         document.querySelector('.back-section__back').addEventListener('click', () => {
 
-            TweenMax.to('.page-home__content-watch-languaje', 0.5, {
+            TweenMax.to('.page-home__content-watch-languaje', 0.8, {
                 left: '-100%',
                 ease: Expo.easeInOut,
                 onComplete: this.onExit()
             });
 
-            // this.props.tl.to('.page-home__content-watch-languaje', .5, {
-            //     right: '20%',
-            //     opacity: 0,
-            //     ease: Back.easeOut.config(1.7),
-            //     onComplete: this.onExit()
-            // });
         });
 
     }

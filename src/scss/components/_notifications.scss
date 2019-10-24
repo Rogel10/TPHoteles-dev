@@ -14,11 +14,12 @@
 .page-notifications {
     
     width: 100%;
+    height: 100%;
     background-color: var(--blue-200);
     position: relative;
     @include flex-box(column, flex-start, center);
     padding-bottom: 10%;
-
+    
 }
 
 // .page-notifications__content-notifications {
